@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import { AuthContext } from '../context/AuthContext';
 
 class Navbar extends Component {
-    static contextType = ThemeContext;
     render() {
-        // Determine if theme is light or dark.
-        const { isLightTheme, light, dark } = this.context;
-        const currentTheme = isLightTheme ? light : dark;
-        return (
-            <nav style={{ background: currentTheme.ui, color: currentTheme.syntax }}>
-                <h1>Context App</h1>
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                </ul>
-            </nav>
-        )
+        return(
+            <AuthContext.Consumer>{(authContext) => (
+                <ThemeContext.Consumer>{(themeContext) => {
+                    const { isAuthenticated, toggleAuth } = authContext;
+
+                    // Determine if theme is light or dark.
+                    const { isLightTheme, light, dark } = themeContext;
+                    const theme = isLightTheme ? light : dark;
+                    return (
+                        <nav style={{ background: theme.ui, color: theme.syntax }}>
+                            <h1>Context App</h1>
+                            <div onClick={toggleAuth}>
+                                { isAuthenticated ? 'Logged In' : 'Logged Out' }
+                            </div>
+                            <ul>
+                                <li>Home</li>
+                                <li>About</li>
+                                <li>Contact</li>
+                            </ul>
+                        </nav>
+                    )
+                }}</ThemeContext.Consumer>
+            )}
+            </AuthContext.Consumer>
+        );
     }
 }
  
