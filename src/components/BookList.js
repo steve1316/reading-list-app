@@ -4,7 +4,7 @@ import { ThemeContext } from '../context/ThemeContext';
 class BookList extends Component {
     static contextType = ThemeContext;
     render() { 
-        console.log(this.context);
+        //console.log(this.context);
 
         // Determine if theme is light or dark.
         const { isLightTheme, light, dark } = this.context;
