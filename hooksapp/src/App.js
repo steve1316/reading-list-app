@@ -1,12 +1,12 @@
-import React from 'react';
-import SongList from './components/SongList';
+import React from 'react'
+import SongList from './components/SongList'
 
-function App() {
+function App () {
   return (
-    <div className="App">
+    <div className='App'>
       <SongList />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

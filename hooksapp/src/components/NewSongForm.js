@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 // Add a new song title by sending the new title to addSong upon submission.
 const NewSongForm = ({ addSong }) => {
   const [title, setTitle] = useState('')
+
   const handleSubmit = e => {
     e.preventDefault()
     addSong(title)
     setTitle('')
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <label>Song name: </label>
+
       <input
         type='text'
         value={title}
@@ -19,6 +22,7 @@ const NewSongForm = ({ addSong }) => {
           setTitle(e.target.value)
         }}
       />
+
       <input type='submit' value='add song' />
     </form>
   )
