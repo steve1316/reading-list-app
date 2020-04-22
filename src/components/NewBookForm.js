@@ -7,6 +7,7 @@ const NewBookForm = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
 
+  // When you click 'Add Book' button, send the state and action to dispatch inside BookContext and then set the 2 input fields to empty.
   const handleSubmit = e => {
     e.preventDefault()
 
